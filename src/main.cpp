@@ -27,7 +27,7 @@ int main(){
     }
     else if(cmdCheck == "type"){
       if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find("exit") == 0){
-        std::cout << restOfInput << "is a shell builtin\n"; 
+        std::cout << restOfInput << " is a shell builtin\n"; 
       }
       else{
         std::cout << restOfInput << ": not found\n";
