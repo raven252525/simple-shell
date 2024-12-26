@@ -68,7 +68,7 @@ int main(int argc, char const* argv[]){
     else if(pathCheck != ""){
         const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
         char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
-        execve(cstrPath, argv[argc], envp);
+        execve(cstrPath, argv[], envp);
       
     }//program exe
     else{
