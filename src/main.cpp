@@ -38,22 +38,15 @@ int main(){
       break;
     }// checks for exit condition 0
 
-    //check if cmd is in path, 
-      //do execve command after using getPath
+    //prepatory work for prorgam exe, we put it after echo, type, and exit keywords bc we want to check those processes first, and we need this for the if conditional
     std::stringstream stream(input);
     std::string pathCheck;
     stream >> pathCheck;//get the entire potential path of the first arg
     stream.clear();
-
     pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
-    if(pathCheck != ""){
-      const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
-      execve(cstrPath);
-    }
-
-
+    
     std::string cmdCheck = input.substr(0,4);
-    std::string restOfInput = input.substr(5);
+    std::string restOfInput = input.substr(5);//string extraction for keywords
 
     if(cmdCheck == "echo"){
       std::cout << restOfInput << std::endl;
@@ -72,7 +65,11 @@ int main(){
         }//path in type
       }
     }//type
-    
+    else if(pathCheck != ""){
+        const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
+        execve(cstrPath);
+      
+    }//program exe
     else{
       std::cout << input << ": command not found\n";
     }//invalid
