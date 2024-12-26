@@ -9,7 +9,7 @@ std::string getPath(std::string command){
   std::string path;// where to place each of the directories separated by the ; in path before adding to return str
 
   while(!ss.eof()){
-    std::getline(ss, path, ';'); // windows uses ; as separator for directories in PATH
+    std::getline(ss, path, ':'); // windows uses ; as separator for directories in PATH
 
     std::string absPath = path + '/' + command;
 
