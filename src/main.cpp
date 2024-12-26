@@ -7,12 +7,12 @@ int main() {
 
   // Uncomment this block to pass the first stage
 
-  do{
+  while(true){
     std::cout << "$ ";
 
     std::string input;
     std::getline(std::cin, input);
 
     std::cout << input << ": command not found\n";
-  } while(input.good() == false);
+  };
 }
