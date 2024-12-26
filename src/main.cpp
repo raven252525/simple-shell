@@ -6,11 +6,10 @@ std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
 
   std::stringstream ss(envPath); // add path environment as a string stream obj
-  std::string path;// where to place each of the directories separated by the ; in path before adding to return str
+  std::string path;// where to place each of the directories separated by the : in path before adding to return str
 
   while(!ss.eof()){
-    std::getline(ss, path, ':'); // windows uses ; as separator for directories in PATH
-
+    std::getline(ss, path, ':');
     std::string absPath = path + '/' + command;
 
     if(std::filesystem::exists(absPath)){
@@ -38,6 +37,19 @@ int main(){
       break;
     }// checks for exit condition 0
 
+    //check if cmd is in path, 
+      //do execve command after using getPath
+    std::stringstream stream(input);
+    std::string pathCheck;
+    stream >> pathCheck;//get the entire potential path of the first arg
+    stream.clear();
+
+    pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
+    if(pathCheck != ""){
+      execve(pathCheck);
+    }
+
+
     std::string cmdCheck = input.substr(0,4);
     std::string restOfInput = input.substr(5);
 
@@ -58,6 +70,7 @@ int main(){
         }//path in type
       }
     }//type
+    
     else{
       std::cout << input << ": command not found\n";
     }//invalid
