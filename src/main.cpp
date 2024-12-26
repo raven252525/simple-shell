@@ -20,8 +20,8 @@ int main() {
 
     std::string echoCheck = input.substr(0,4);
     if(echoCheck == "echo"){
-      int length = input.length() - echoCheck.length(); 
-      std::string echoPrint = input.substr(6, length);
+      int length = input.length() - echoCheck.length() + 1; 
+      std::string echoPrint = input.substr(5, length);
       std::cout << echoPrint << std::endl;
     }
 
