@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include <cunistd>
+#include <unistd.h>
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
