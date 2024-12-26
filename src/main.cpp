@@ -18,16 +18,26 @@ int main() {
       break;
     }// checks for exit condition 0
 
-    std::string echoCheck = input.substr(0,4);
-    if(echoCheck == "echo"){
-      int length = input.length() - echoCheck.length(); 
-      std::string echoPrint = input.substr(5, length);
-      std::cout << echoPrint << std::endl;
+    std::string cmdCheck = input.substr(0,4);
+    std::string restOfInput = input.substr(5);
+
+    switch(cmdCheck){
+      case "echo":
+        std::cout << restOfInput << std::endl;
+
+      case "type":
+        if(restOfInput.find("type") != "npos" || restOfInput.find("echo") != "npos" || restOfInput.find("exit") != "npos"){
+          std::cout << restOfInput << "is a shell builtin\n"; 
+        }
+        else{
+          std::cout << restOfInput << ": not found\n";
+        }
+
+      default:
+        std::cout << input << ": command not found\n";
     }
 
-    
-    else{
-      std::cout << input << ": command not found\n";
-    }  
+
+
   };
 }
