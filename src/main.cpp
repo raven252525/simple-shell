@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int main() {
+int main(){
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
@@ -26,7 +26,7 @@ int main() {
       std::cout << restOfInput << std::endl;
     }
     else if(cmdCheck == "type"){
-      if(restOfInput.find("type") != "npos" || restOfInput.find("echo") != "npos" || restOfInput.find("exit") != "npos"){
+      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find("exit") == 0){
         std::cout << restOfInput << "is a shell builtin\n"; 
       }
       else{
@@ -34,7 +34,7 @@ int main() {
       }
     }
     else{
-      std::cout << input << ": command not found\n";}
+      std::cout << input << ": command not found\n";
     }
-  };
+  }
 }
