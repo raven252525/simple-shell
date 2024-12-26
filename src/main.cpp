@@ -23,7 +23,7 @@ std::string getPath(std::string command){
 
 
 
-int main(int argc, char const* argv[]){
+int main(int argc, char *argv[]){
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
