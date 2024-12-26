@@ -21,23 +21,20 @@ int main() {
     std::string cmdCheck = input.substr(0,4);
     std::string restOfInput = input.substr(5);
 
-    switch(cmdCheck){
-      case "echo":
-        std::cout << restOfInput << std::endl;
-
-      case "type":
-        if(restOfInput.find("type") != "npos" || restOfInput.find("echo") != "npos" || restOfInput.find("exit") != "npos"){
-          std::cout << restOfInput << "is a shell builtin\n"; 
-        }
-        else{
-          std::cout << restOfInput << ": not found\n";
-        }
-
-      default:
-        std::cout << input << ": command not found\n";
+    
+    if(cmdCheck == "echo"){
+      std::cout << restOfInput << std::endl;
     }
-
-
-
+    else if(cmdCheck == "type"){
+      if(restOfInput.find("type") != "npos" || restOfInput.find("echo") != "npos" || restOfInput.find("exit") != "npos"){
+        std::cout << restOfInput << "is a shell builtin\n"; 
+      }
+      else{
+        std::cout << restOfInput << ": not found\n";
+      }
+    }
+    else{
+      std::cout << input << ": command not found\n";}
+    }
   };
 }
