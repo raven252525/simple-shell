@@ -45,9 +45,9 @@ int main(){
     stream >> pathCheck;//get the entire potential path of the first arg
     stream.clear();
 
-    pathCheck = getPath(pathCheck);
-    const char* cstrPath = pathCheck.c_str();//reinitilaize the firt arg as a const char* path, if not, then its an empty string
+    pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
     if(pathCheck != ""){
+      const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
       execve(cstrPath);
     }
 
