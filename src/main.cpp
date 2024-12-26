@@ -13,7 +13,7 @@ std::string getPath(std::string command){
 
     std::string absPath = path + '/' + command;
 
-    if(filesystem::exists(absPath)){
+    if(std::filesystem::exists(absPath)){
       return absPath;
     }
   }
