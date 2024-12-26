@@ -6,10 +6,10 @@ std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
 
   std::stringstream ss(envPath); // add path environment as a string stream obj
-  st::string path;// where to place each of the directories separated by the ; in path before adding to return str
+  std::string path;// where to place each of the directories separated by the ; in path before adding to return str
 
   while(!ss.eof()){
-    std::getline(ss, path, ;) // windows uses ; as separator for directories in PATH
+    std::getline(ss, path, ';'); // windows uses ; as separator for directories in PATH
 
     std::string absPath = path + '/' + command;
 
