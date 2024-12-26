@@ -23,7 +23,7 @@ std::string getPath(std::string command){
 
 
 
-int main(){
+int main(int argc, char *argv[]){
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
@@ -67,7 +67,8 @@ int main(){
     }//type
     else if(pathCheck != ""){
         const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
-        execve(cstrPath);
+        char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
+        execve(cstrPath, argv, envp);
       
     }//program exe
     else{
