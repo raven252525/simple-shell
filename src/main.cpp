@@ -22,7 +22,17 @@ std::string getPath(std::string command){
   return "";//returns an empty string if there is no path that exists
 }
 
+std::vetor<std::string> split_string(const string &s, char delim){
+    std::stringstream SS(s);
+    std::vector<std::string> return_vect;
 
+    std::string token;
+
+    while(getline(ss, token, delimiter)){
+      return_vect.push_back(token);
+    }
+    return return_vect;
+}
 
 int main(){
   // Flush after every std::cout / std:cerr
