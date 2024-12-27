@@ -44,15 +44,16 @@ int main(){
     stream >> pathCheck;//get the entire potential path of the first arg
     pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
     
+    arguments = split_string(input, ' ');
     std::string cmdCheck = input.substr(0,4);
     std::string restOfInput = input.substr(5);//string extraction for keywords
 
-    if(cmdCheck == "echo"){
+    if(arguments[0] == "echo"){
       std::cout << restOfInput << std::endl;
     }//echo
-    else if(cmdCheck == "type"){
-      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find("exit") == 0){
-        std::cout << restOfInput << " is a shell builtin\n"; 
+    else if(arguments[0] == "type"){
+      if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit"){
+        std::cout << arguments[1] << " is a shell builtin\n"; 
       }
       else{
         std::string path = getPath(restOfInput); // returns the path of the input to string
@@ -60,15 +61,16 @@ int main(){
           std::cout << restOfInput << ": not found\n";
         }
         else{
-          std::cout << restOfInput << " is " << path << std::endl;
+          for(int i = 1; i < arguments.size(); i++){
+            std::cout << arguments[i];
+          }
+          std::cout << " is " << path << std::endl;
         }//path in type
       }
     }//type
     else if(pathCheck != ""){
-
-
         const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
-        char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(restOfInput.c_str()), nullptr};
+        char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(arguments[1].c_str()), nullptr};
         char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
         execve(cstrPath, argv, envp);
     }//program exe
