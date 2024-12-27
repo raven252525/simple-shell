@@ -2,6 +2,7 @@
 #include <string>
 #include <filesystem>
 #include <unistd.h>
+#include <vector>
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
@@ -44,9 +45,10 @@ int main(){
     stream >> pathCheck;//get the entire potential path of the first arg
     pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
     
-    arguments = split_string(input, ' ');
-    std::string cmdCheck = input.substr(0,4);
-    std::string restOfInput = input.substr(5);//string extraction for keywords
+    std::vector<std::string> arguments;
+    arguments = split_string(input, ' ');//specifically when we need to isolate args
+
+    std::string restOfInput = input.substr(5);//string extraction for keywords, and for echo and type ease of use
 
     if(arguments[0] == "echo"){
       std::cout << restOfInput << std::endl;
@@ -61,10 +63,7 @@ int main(){
           std::cout << restOfInput << ": not found\n";
         }
         else{
-          for(int i = 1; i < arguments.size(); i++){
-            std::cout << arguments[i];
-          }
-          std::cout << " is " << path << std::endl;
+          std::cout<< restOfInput << " is " << path << std::endl;
         }//path in type
       }
     }//type
