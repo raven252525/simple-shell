@@ -45,7 +45,6 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
   if (pid < 0) {
       // Error occurred during fork
       perror("fork failed");
-      return 1;
   }
   else if (pid == 0) {
     // Child process
@@ -54,7 +53,6 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
 
     if (execve(argv[0], argv, envp) == -1) {
         perror("execve failed");
-        return 1; // If execve fails, return an error code
     }
   }
   else {
