@@ -51,7 +51,7 @@ int main(){
       std::cout << restOfInput << std::endl;
     }//echo
     else if(cmdCheck == "type"){
-      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find(restOfInput.c_str()) == 0){
+      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find() == 0){
         std::cout << restOfInput << " is a shell builtin\n"; 
       }
       else{
