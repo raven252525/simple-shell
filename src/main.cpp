@@ -36,10 +36,6 @@ std::vector<std::string> split_string(const std::string &s, char delim){
 }
 
 void executeChild(std::string pathCh, std::vector<std::string> args){
-  const char* cPath = pathCh.c_str(); //converts string to cstring char*
-  char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(args[1].c_str()), nullptr};
-  char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
-  execve(cPath, argv, envp);
   pid_t pid = fork(); //create parent child process
 
   if (pid < 0) {
@@ -55,7 +51,7 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
         perror("execve failed");
     }
   }
-  else {
+  else{
     // Parent process
     int status;
     waitpid(pid, &status, 0); // Wait for the child process to complete
