@@ -105,9 +105,12 @@ int main(){
         }//path in type
       }
     }//type
+    else if(arguments[0] == "pwd"){
+      std::string pPath = getPath(input);
+      std::cout << pPath << std::endl;
+    }//pwd
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
-
     }//program exe
     else{
       std::cout << input << ": command not found\n";
