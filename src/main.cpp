@@ -55,12 +55,6 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
     // Parent process
     int status;
     waitpid(pid, &status, 0); // Wait for the child process to complete
-
-        if (WIFEXITED(status)) {
-            std::cout << "Child process exited with code: " << WEXITSTATUS(status) << std::endl;
-        } else {
-            std::cout << "Child process did not terminate normally." << std::endl;
-        }
   }
 
 
