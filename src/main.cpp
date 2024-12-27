@@ -67,6 +67,7 @@ int main(){
     }//type
     else if(pathCheck != ""){
       std::string command = "exec " + pathCheck + '/' + input;
+      std::cout << command << std::endl;
       std::system(command.c_str());
     }//program exe
     else{
