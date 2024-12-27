@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <unistd.h>
 #include <vector>
-#include <sys/wait.h> // For waitpid
+#include <sys/wait.h> //For waitpid
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
@@ -33,6 +33,8 @@ std::vector<std::string> split_string(const std::string &s, char delim){
       return_vect.push_back(token);
     }
     return return_vect;
+
+    //testolsiket;lakjwnseltkawbjelrt
 }
 
 void executeChild(std::string pathCh, std::vector<std::string> args){
