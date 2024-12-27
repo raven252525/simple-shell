@@ -104,8 +104,8 @@ int main(){
       }
     }//type
     else if(arguments[0] == "pwd"){
-      std::string pPath = getPath(input);
-      std::cout << pPath << std::endl;
+      std::string pWD = std::filesystem::current_path();
+      std::cout << pWD << std::endl;
     }//pwd
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
