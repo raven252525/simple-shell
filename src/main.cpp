@@ -28,7 +28,7 @@ std::vector<std::string> split_string(const std::string &s, char delim){
 
     std::string token;
 
-    while(getline(ss, token, delimiter)){
+    while(getline(SS, token, delim)){
       return_vect.push_back(token);
     }
     return return_vect;
