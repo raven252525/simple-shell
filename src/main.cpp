@@ -51,7 +51,7 @@ int main(){
       std::cout << restOfInput << std::endl;
     }//echo
     else if(cmdCheck == "type"){
-      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find() == 0){
+      if(restOfInput.find("type") == 0 || restOfInput.find("echo") == 0 || restOfInput.find("exit") == 0){
         std::cout << restOfInput << " is a shell builtin\n"; 
       }
       else{
@@ -68,7 +68,7 @@ int main(){
 
 
         const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
-        char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>("test"), nullptr};
+        char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(restOfInput.c_str()), nullptr};
         char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
         execve(cstrPath, argv, envp);
     }//program exe
