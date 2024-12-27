@@ -22,7 +22,7 @@ std::string getPath(std::string command){
   return "";//returns an empty string if there is no path that exists
 }
 
-std::vetor<std::string> split_string(const string &s, char delim){
+std::vector<std::string> split_string(const string &s, char delim){
     std::stringstream SS(s);
     std::vector<std::string> return_vect;
 
