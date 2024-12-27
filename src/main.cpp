@@ -34,7 +34,6 @@ std::vector<std::string> split_string(const std::string &s, char delim){
     }
     return return_vect;
 
-    //testolsiket;lakjwnseltkawbjelrt
 }
 
 void executeChild(std::string pathCh, std::vector<std::string> args){
