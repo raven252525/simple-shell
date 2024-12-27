@@ -86,7 +86,9 @@ int main(){
     std::vector<std::string> arguments;
     arguments = split_string(input, ' ');//specifically when we need to isolate args
 
-    std::string restOfInput = input.substr(5);//string extraction for keywords, and for echo and type ease of use
+    if(arguments.size() > 1){
+      std::string restOfInput = input.substr(5);//string extraction for keywords, and for echo and type ease of use
+    }//conditional here because rest of input does not need to exist when only 1 arg
 
     if(arguments[0] == "echo"){
       std::cout << restOfInput << std::endl;
