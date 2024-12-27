@@ -66,9 +66,10 @@ int main(){
       }
     }//type
     else if(pathCheck != ""){
-      std::string command = "exec " + pathCheck + '/' + input;
-      std::cout << command << std::endl;
-      std::system(command.c_str());
+        const char* cstrPath = pathCheck.c_str(); //converts string to cstring char*
+        char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(restOfInput), nullptr};
+        char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
+        execve(cstrPath, argv, envp);
     }//program exe
     else{
       std::cout << input << ": command not found\n";
