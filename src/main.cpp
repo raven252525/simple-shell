@@ -86,24 +86,20 @@ int main(){
     std::vector<std::string> arguments;
     arguments = split_string(input, ' ');//specifically when we need to isolate args
 
-    if(arguments.size() > 1){
-      std::string restOfInput = input.substr(5);//string extraction for keywords, and for echo and type ease of use
-    }//conditional here because rest of input does not need to exist when only 1 arg
-
     if(arguments[0] == "echo"){
-      std::cout << restOfInput << std::endl;
+      std::cout << input.substr(5) << std::endl;
     }//echo
     else if(arguments[0] == "type"){
       if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd"){
         std::cout << arguments[1] << " is a shell builtin\n"; 
       }
       else{
-        std::string path = getPath(restOfInput); // returns the path of the input to string
+        std::string path = getPath(input.substr(5)); // returns the path of the input to string
         if(path.empty()){
-          std::cout << restOfInput << ": not found\n";
+          std::cout << input.substr(5) << ": not found\n";
         }
         else{
-          std::cout<< restOfInput << " is " << path << std::endl;
+          std::cout<< input.substr(5) << " is " << path << std::endl;
         }//path in type
       }
     }//type
