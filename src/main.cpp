@@ -36,7 +36,7 @@ std::vector<std::string> split_string(const std::string &s, char delim){
 }
 
 void executeChild(std::string pathCh, std::vector<std::string> args){
-
+  
   pid_t pid = fork(); //create parent child process
 
   if (pid < 0) {
@@ -45,6 +45,7 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
   }
   else if (pid == 0) {
     // Child process
+    const char* cPath = pathCh.c_str(); //converts string to cstring char*
     char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(args[1].c_str()), nullptr};
     char *const envp[] = {nullptr};
 
