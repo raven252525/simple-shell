@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <unistd.h>
 #include <vector>
+#include <sys/wait.h> // For waitpid
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
@@ -39,6 +40,36 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
   char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(args[1].c_str()), nullptr};
   char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
   execve(cPath, argv, envp);
+  pid_t pid = fork(); //create parent child process
+
+  if (pid < 0) {
+      // Error occurred during fork
+      perror("fork failed");
+      return 1;
+  }
+  else if (pid == 0) {
+    // Child process
+    char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(args[1].c_str()), nullptr};
+    char *const envp[] = {nullptr};
+
+    if (execve(argv[0], argv, envp) == -1) {
+        perror("execve failed");
+        return 1; // If execve fails, return an error code
+    }
+  }
+  else {
+    // Parent process
+    int status;
+    waitpid(pid, &status, 0); // Wait for the child process to complete
+
+        if (WIFEXITED(status)) {
+            std::cout << "Child process exited with code: " << WEXITSTATUS(status) << std::endl;
+        } else {
+            std::cout << "Child process did not terminate normally." << std::endl;
+        }
+  }
+
+
 }
 
 int main(){
