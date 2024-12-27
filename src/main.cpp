@@ -92,7 +92,7 @@ int main(){
       std::cout << restOfInput << std::endl;
     }//echo
     else if(arguments[0] == "type"){
-      if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit"){
+      if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd"){
         std::cout << arguments[1] << " is a shell builtin\n"; 
       }
       else{
