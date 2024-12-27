@@ -34,7 +34,7 @@ std::vector<std::string> split_string(const std::string &s, char delim){
     return return_vect;
 }
 
-void executeChild(std::string cPath, std::vector<std::string> args){
+void executeChild(std::string pathCh, std::vector<std::string> args){
   const char* cPath = pathCh.c_str(); //converts string to cstring char*
   char *const argv[] = {const_cast<char*>("/bin/ls"), const_cast<char*>(args[1].c_str()), nullptr};
   char *const envp[] = {nullptr}; // initializes an array of null terminated strings repping environment variables
@@ -85,7 +85,8 @@ int main(){
       }
     }//type
     else if(pathCheck != ""){
-      executeChild(pathCheck, arguments);        
+      executeChild(pathCheck, arguments); 
+             
     }//program exe
     else{
       std::cout << input << ": command not found\n";
