@@ -100,7 +100,8 @@ int main(){
     if(arguments[0] == "echo"){
       //std::cout << input.substr(5) << std::endl; old v
       std::string stringLit = input.substr(5); // create a string with everything after echo
-      int quoteFreq = checkCharFrequency(stringLit, "'");
+      char quote = "'";
+      int quoteFreq = checkCharFrequency(stringLit, quote);
       std::cout << quoteFreq;
 
       if(stringLit.find("'") == 0 || quoteFreq != 2){
