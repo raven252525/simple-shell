@@ -64,7 +64,7 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
 int checkCharFrequency(std::string s, const char* toCheck){
   int count;
   for(int i = 0; i < s.size(); i++){
-    if(s[i] == toCheck){
+    if(s[i] == toCheck*){
       count++;
     } 
   }
