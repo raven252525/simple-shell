@@ -111,13 +111,13 @@ int main(){
                 result += ' ';
                 prevSpace = true;
             }
-        } 
-        else {
-          result += c;
-          prevSpace = false;
-        }
-    }
-    std::cout << result << std::endl;
+          } 
+          else {
+            result += c;
+            prevSpace = false;
+          }
+        std::cout << result << std::endl;
+      }
       else{
         int firstQuote = stringLit.find('\'');
         std::string tempStr = stringLit.substr((firstQuote + 1));
