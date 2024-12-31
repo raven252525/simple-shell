@@ -137,7 +137,7 @@ int main(){
         fl.close();
       }
       else{
-        std::cout << "not a valid input\n";
+        std::cout << arguments[0] << "not a valid input\n";
       }
     }
     else if(arguments[0] == "type"){
