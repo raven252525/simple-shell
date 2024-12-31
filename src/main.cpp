@@ -110,7 +110,7 @@ int main(){
         std::string tempStr = stringLit.substr((firstQuote + 1));
         int secondQuote = tempStr.find('\'');
 
-        std::string finalString = stringLit.substr((firstQuote + 1), (stringLit.length() - firstQuote - 1));
+        std::string finalString = stringLit.substr((firstQuote + 1), (stringLit.length() - firstQuote - 2));
         std::cout << finalString << std::endl;
       }
     }//echo
