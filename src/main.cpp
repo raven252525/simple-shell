@@ -117,7 +117,7 @@ int main(){
         else{
           std::cout << arguments[1] << ": No such file or directory\n"; 
         }
-    }//cd to absolute path, home dir, AND relative path surprisingly! Live laugh love the standard library
+    }//cd to absolute path, ~(homedir), AND relative path surprisingly! Live laugh love the standard library
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
     }//program exe
