@@ -104,7 +104,7 @@ int main(){
       
       if(stringLit.find('\'') == std::string::npos || quoteFreq != 2){
         for(int i = 1; i < arguments.size(); i++){
-          std::cout << arguments[i] << " ";
+          std::cout << arguments[i] << ' ';
         }
         std::cout << std::endl;
       }
