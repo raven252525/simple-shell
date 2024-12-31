@@ -4,7 +4,8 @@
 #include <unistd.h>
 #include <vector>
 #include <sys/wait.h> /*For waitpid,
-gives error bc windows is not in POSIX compliant environment, but in Linux system, program runs*/
+gives error bc windows is not in POSIX compliant environment,
+but in Linux system, program runs*/
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
