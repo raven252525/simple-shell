@@ -110,7 +110,7 @@ int main(){
         std::string temp;
         int i = 0;
         while(S >> temp){
-          std::cout << (i++ ? format(" {}", temp) : temp); // this essentially will return a space followed by the string except for the first case
+          std::cout << (i++ ? std::format(" {}", temp) : temp); // this essentially will return a space followed by the string except for the first case
         }
         std::cout << std::endl;
       }
