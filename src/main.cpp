@@ -119,7 +119,7 @@ int main(){
 
     }//echo
     else if(arguments[0] == "cat"){
-      std::string files = input.substr(5);
+      std::string files = input.substr(4);
       if(files.front() == '\'' && files.back() == '\''){
         files = files.substr(1, files.length() - 2);
         
