@@ -109,9 +109,7 @@ int main(){
     else if(arguments[0] == "cd"){
         if(arguments[1] == "~"){
           std::string homeEnv = std::getenv("HOME");
-          std::string homePath = getPath(homeEnv);
-          std::string absPath = homePath + '/';
-          std::filesystem::current_path(absPath);
+          std::filesystem::current_path(homeEnv);
         }
         else if(std::filesystem::exists(arguments[1])){
           std::filesystem::current_path(arguments[1]);
