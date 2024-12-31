@@ -113,7 +113,7 @@ int main(){
         else{
           std::cout << arguments[1] << ": No such file or directory\n"; 
         }
-    }//cd from absolute path
+    }//cd from absolute path AND relative surprisingly! Live laugh love the standard library
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
     }//program exe
