@@ -124,17 +124,17 @@ int main(){
         files = files.substr(1, files.length() - 2);
         
         std::ifstream fl(files);
-        if(!file.is_open()){
+        if(!fl.is_open()){
           std::cout << "Cannot open file\n";
           break;
         }
 
         std::string line;
-        while (std::getline(file, line)) {
+        while (std::getline(fl, line)) {
           std::cout << line << std::endl;
         }
 
-        file.close();
+        fl.close();
       }
       else{
         std::cout << "not a valid input\n";
