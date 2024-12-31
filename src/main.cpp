@@ -108,7 +108,7 @@ int main(){
     }//pwd
     else if(arguments[0] == "cd"){
         if(arguments[1] == "~"){
-          if(std::string homeEnv = std::getenv("HOME") != NULL){
+          if(const char *homeEnv = std::getenv("HOME") != NULL){
             std::string homePath = getPath(homeEnv);
             std::string absPath = homePath + '/';
             std::filesystem::current_path(absPath);
