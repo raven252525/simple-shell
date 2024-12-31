@@ -111,7 +111,7 @@ int main(){
           std::string homeEnv = std::getenv("HOME");
           std::string homePath = getPath(homeEnv);
           std::string absPath = homePath + '/';
-          std::filesystem::current_path(absPath)
+          std::filesystem::current_path(absPath);
         }
         else if(std::filesystem::exists(arguments[1])){
           std::filesystem::current_path(arguments[1]);
