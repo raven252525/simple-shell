@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <unistd.h>
 #include <vector>
+#include <utility>
+#include <sstream>
 #include <sys/wait.h> /*For waitpid,
 gives error bc windows is not in POSIX compliant environment,
 but in Linux system, program runs*/
@@ -93,26 +95,26 @@ int main(){
     std::string pathCheck;
     stream >> pathCheck;//get the entire potential path of the first arg
     pathCheck = getPath(pathCheck); //reinitilaize the firt arg as a path, if not, then its an empty string
-    
+    stream.str(""); stream.clear();
+
     std::vector<std::string> arguments;
     arguments = split_string(input, ' ');//specifically when we need to isolate args
 
     if(arguments[0] == "echo"){
-      //std::cout << input.substr(5) << std::endl; old v
-      std::string stringLit = input.substr(5); // create a string with everything after echo
-      int quoteFreq = checkCharFrequency(stringLit, '\'');
-
-      if(stringLit.find('\'') == 0 || quoteFreq != 2){
-        std::cout << stringLit << std::endl;
+      std::string stringLit = input.substr(5);
+      if(stringLit.front() == '\'' && stringLit.back == '\''){
+        std::cout << stringLit.substr(1, stringLit.size() - 2) << std::endl;
       }
       else{
-        int firstQuote = stringLit.find('\'');
-        std::string tempStr = stringLit.substr((firstQuote + 1));
-        int secondQuote = tempStr.find('\'');
-
-        std::string finalString = stringLit.substr((firstQuote + 1), (secondQuote - 1));
-        std::cout << finalString << std::endl;
+        std::stringstream S{stringLit.data()};
+        std::string temp;
+        int i = 0;
+        while(S >> temp){
+          std::cout << (i++ ? std::format(" {}", temp) : temp); // this essentially will return a space followed by the string except for the first case
+        }
+        std::cout << std::endl;
       }
+
     }//echo
     else if(arguments[0] == "type"){
       if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd"){
