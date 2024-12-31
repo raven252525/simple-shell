@@ -99,14 +99,30 @@ int main(){
 
     if(arguments[0] == "echo"){
       //std::cout << input.substr(5) << std::endl; old v
-      std::string stringLit = input.substr(5); // create a string with everything after echo
+      /*std::string stringLit = input.substr(5); // create a string with everything after echo
       int quoteFreq = checkCharFrequency(stringLit, '\'');
       
       if(stringLit.find('\'') == std::string::npos || quoteFreq != 2){
         for(int i = 1; i < arguments.size(); i++){
           std::cout << arguments[i] << ' ';
         }
-        std::cout << std::endl;
+        std::cout << std::endl;*/
+
+      std::string result;
+      bool prevSpace = false;
+      for(char c : stringLit) {
+        if(isspace(c)) {
+          if(!prevSpace) {
+            result += ' ';
+            prevSpace = true;
+          }
+        } 
+        else {
+          result += c;
+          prevSpace = false;
+        }
+    }
+    std::cout << result << std::endl;
       }
       else{
         int firstQuote = stringLit.find('\'');
