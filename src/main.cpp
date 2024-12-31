@@ -102,7 +102,7 @@ int main(){
 
     if(arguments[0] == "echo"){
       std::string stringLit = input.substr(5);
-      if(stringLit.front() == '\'' && stringLit.back == '\''){
+      if(stringLit.front() == '\'' && stringLit.back() == '\''){
         std::cout << stringLit.substr(1, stringLit.size() - 2) << std::endl;
       }
       else{
@@ -110,7 +110,7 @@ int main(){
         std::string temp;
         int i = 0;
         while(S >> temp){
-          std::cout << (i++ ? std::format(" {}", temp) : temp); // this essentially will return a space followed by the string except for the first case
+          std::cout << (i++ ? format(" {}", temp) : temp); // this essentially will return a space followed by the string except for the first case
         }
         std::cout << std::endl;
       }
