@@ -98,33 +98,20 @@ int main(){
     arguments = split_string(input, ' ');//specifically when we need to isolate args
 
     if(arguments[0] == "echo"){
+      //std::cout << input.substr(5) << std::endl; old v
       std::string stringLit = input.substr(5); // create a string with everything after echo
       int quoteFreq = checkCharFrequency(stringLit, '\'');
+      std::cout << quoteFreq;
 
-      if(stringLit.find('\'') == std::string::npos || quoteFreq != 2) {
-        // No quotes case - remove extra whitespace
-        std::string result;
-        bool prevSpace = false;
-        for(char c : stringLit) {
-          if(isspace(c)) {
-            if(!prevSpace) {
-                result += ' ';
-                prevSpace = true;
-            }
-          } 
-          else {
-            result += c;
-            prevSpace = false;
-          }
-        std::cout << result << std::endl;
-        }
+      if(stringLit.find('\'') == 0 || quoteFreq != 2){
+        std::cout << stringLit << std::endl;
       }
       else{
         int firstQuote = stringLit.find('\'');
         std::string tempStr = stringLit.substr((firstQuote + 1));
-        ///int secondQuote = tempStr.find('\'');
+        int secondQuote = tempStr.find('\'');
 
-        std::string finalString = stringLit.substr((firstQuote + 1), (stringLit.length() - firstQuote - 2));
+        std::string finalString = stringLit.substr((firstQuote + 1), (secondQuote - 1));
         std::cout << finalString << std::endl;
       }
     }//echo
