@@ -102,7 +102,7 @@ int main(){
       std::string stringLit = input.substr(5); // create a string with everything after echo
       int quoteFreq = checkCharFrequency(stringLit, "'");
 
-      if(stringLit.find("'") == std::string::npos || quoteFreq != 2){
+      if(stringLit.find("'") == 0 || quoteFreq != 2){
         std::cout << stringLit << std::endl;
       }
       else{
@@ -110,7 +110,7 @@ int main(){
         std::string tempStr = stringLit.substr((firstQuote + 1));
         int secondQuote = tempStr.find("'");
 
-        std::string finalString = stringLit.substr((firstQuote + 3), (secondQuote - 1));
+        std::string finalString = stringLit.substr((firstQuote + 1), (secondQuote - 1));
         std::cout << finalString << std::endl;
       }
     }//echo
