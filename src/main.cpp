@@ -110,7 +110,8 @@ int main(){
         std::string temp;
         int i = 0;
         while(S >> temp){
-          std::cout << (i++ ? std::cout << " " << temp : temp); // this essentially will return a space followed by the string except for the first case
+          std::string temp2 = ' ' + temp;
+          std::cout << (i++ ? temp2 : temp); // this essentially will return a space followed by the string except for the first case
         }
         std::cout << std::endl;
       }
