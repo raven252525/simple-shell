@@ -5,6 +5,7 @@
 #include <vector>
 #include <utility>
 #include <sstream>
+#include <fstream>
 #include <sys/wait.h> /*For waitpid,
 gives error bc windows is not in POSIX compliant environment,
 but in Linux system, program runs*/
@@ -117,8 +118,30 @@ int main(){
       }
 
     }//echo
+    else if(arguments[0] == "cat"){
+      std::string files = input.substr(5);
+      if(files.front() == '\'' && files.back() == '\''){
+        files = files.substr(1, file.size() - 2);
+        
+        std::ifstream fl(files);
+        if(!file.is_open()){
+          std::cout << "Cannot open file\n";
+          break;
+        }
+
+        std::string line;
+        while (std::getline(file, line)) {
+          std::cout << line << std::endl;
+        }
+
+        file.close();
+      }
+      else{
+        std::cout << "not a valid input\n";
+      }
+    }
     else if(arguments[0] == "type"){
-      if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd"){
+      if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd" || arguments[1] == "cd"){
         std::cout << arguments[1] << " is a shell builtin\n"; 
       }
       else{
