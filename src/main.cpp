@@ -117,6 +117,7 @@ int main(){
             prevSpace = false;
           }
         std::cout << result << std::endl;
+        }
       }
       else{
         int firstQuote = stringLit.find('\'');
