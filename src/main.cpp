@@ -100,17 +100,16 @@ int main(){
     if(arguments[0] == "echo"){
       //std::cout << input.substr(5) << std::endl; old v
       std::string stringLit = input.substr(5); // create a string with everything after echo
-      char quote = "'";
-      int quoteFreq = checkCharFrequency(stringLit, quote);
+      int quoteFreq = checkCharFrequency(stringLit, '\'');
       std::cout << quoteFreq;
 
-      if(stringLit.find("'") == 0 || quoteFreq != 2){
+      if(stringLit.find('\'') == 0 || quoteFreq != 2){
         std::cout << stringLit << std::endl;
       }
       else{
-        int firstQuote = stringLit.find("'");
+        int firstQuote = stringLit.find('\'');
         std::string tempStr = stringLit.substr((firstQuote + 1));
-        int secondQuote = tempStr.find("'");
+        int secondQuote = tempStr.find('\'');
 
         std::string finalString = stringLit.substr((firstQuote + 1), (secondQuote - 1));
         std::cout << finalString << std::endl;
