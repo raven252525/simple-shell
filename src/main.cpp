@@ -61,6 +61,17 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
   }
 }
 
+int checkCharFrequency(std::string s, char toCheck){
+  int count;
+  for(int i = 0; i < s.size(); i++){
+    if(s[i] == toCheck){
+      count++;
+    } 
+  }
+
+  return count;
+}//checks the frequency of a character in a string
+
 int main(){
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
@@ -87,7 +98,21 @@ int main(){
     arguments = split_string(input, ' ');//specifically when we need to isolate args
 
     if(arguments[0] == "echo"){
-      std::cout << input.substr(5) << std::endl;
+      //std::cout << input.substr(5) << std::endl; old v
+      std::string stringLit = input.substr(5); // create a string with everything after echo
+      int quoteFreq = checkCharFrequency(stringLit, "'");
+
+      if(stringLit.find("'") == std::string::npos || quoteFreq != 2){
+        std::cout << stringLit << std::endl;
+      }
+      else{
+        int firstQuote = stringLit.find("'");
+        std::string tempStr = stringLit.substr((firstQuote + 1));
+        int secondQuote = tempStr.find("'");
+
+        std::string finalString = stringLit.substr(firstQuote, secondQuote);
+        std::cout << finalString << std::endl;
+      }
     }//echo
     else if(arguments[0] == "type"){
       if(arguments[1] == "type" || arguments[1] == "echo" || arguments[1] == "exit" || arguments[1] == "pwd"){
