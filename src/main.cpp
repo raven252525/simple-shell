@@ -3,7 +3,8 @@
 #include <filesystem>
 #include <unistd.h>
 #include <vector>
-#include <sys/wait.h> //For waitpid
+#include <sys/wait.h> /*For waitpid,
+gives error bc windows is not in POSIX compliant environment, but in Linux system, program runs*/
 
 std::string getPath(std::string command){
   std::string envPath = std::getenv("PATH");
@@ -57,8 +58,6 @@ void executeChild(std::string pathCh, std::vector<std::string> args){
     int status;
     waitpid(pid, &status, 0); // Wait for the child process to complete
   }
-
-
 }
 
 int main(){
@@ -76,7 +75,8 @@ int main(){
       break;
     }// checks for exit condition 0
 
-    //prepatory work for prorgam exe, we put it after echo, type, and exit keywords bc we want to check those processes first, and we need this for the if conditional
+    /*prepatory work for prorgam exe, we put it after echo, type, and exit keywords 
+    bc we want to check those processes first, and we need this for the if conditional*/
     std::stringstream stream(input);
     std::string pathCheck;
     stream >> pathCheck;//get the entire potential path of the first arg
@@ -107,13 +107,21 @@ int main(){
       std::cout << pWD << std::endl;
     }//pwd
     else if(arguments[0] == "cd"){
-        if(std::filesystem::exists(arguments[1])){
+        if(arguments[1] == "~"){
+          if(std::string homeEnv = std::getenv("HOME") != NULL){
+            std::string homePath = getPath(homeEnv);
+            std::string absPath = homePath + '/';
+            std::filesystem::current_path(absPath);
+          }
+          else{std::cout << "FAILED WE NEED TO SET HOMEDIR\n";}
+        }
+        else if(std::filesystem::exists(arguments[1])){
           std::filesystem::current_path(arguments[1]);
         }
         else{
           std::cout << arguments[1] << ": No such file or directory\n"; 
         }
-    }//cd from absolute path AND relative surprisingly! Live laugh love the standard library
+    }//cd to absolute path, home dir, AND relative path surprisingly! Live laugh love the standard library
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
     }//program exe
