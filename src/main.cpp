@@ -3,7 +3,6 @@
 #include <filesystem>
 #include <unistd.h>
 #include <vector>
-#include <iomanip>
 #include <sys/wait.h> /*For waitpid,
 gives error bc windows is not in POSIX compliant environment,
 but in Linux system, program runs*/
@@ -104,7 +103,9 @@ int main(){
       int quoteFreq = checkCharFrequency(stringLit, '\'');
       
       if(stringLit.find('\'') == std::string::npos || quoteFreq != 2){
-        std::cout << std::quoted(stringLit) << std::endl;
+        for(int i = 1; i < arguments.size(); i++){
+          std::cout << arguments[i] << " \n";
+        }
       }
       else{
         int firstQuote = stringLit.find('\'');
