@@ -101,9 +101,8 @@ int main(){
       //std::cout << input.substr(5) << std::endl; old v
       std::string stringLit = input.substr(5); // create a string with everything after echo
       int quoteFreq = checkCharFrequency(stringLit, '\'');
-      std::cout << quoteFreq;
-
-      if(stringLit.find('\'') == 0 || quoteFreq != 2){
+      
+      if(stringLit.find('\'') == std::string::npos || quoteFreq != 2){
         std::cout << stringLit << std::endl;
       }
       else{
