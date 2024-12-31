@@ -108,12 +108,10 @@ int main(){
     }//pwd
     else if(arguments[0] == "cd"){
         if(arguments[1] == "~"){
-          if(std::string homeEnv = std::getenv("HOME")){
-            std::string homePath = getPath(homeEnv);
-            std::string absPath = homePath + '/';
-            std::filesystem::current_path(absPath);
-          }
-          else{std::cout << "FAILED WE NEED TO SET HOMEDIR\n";}
+          std::string homeEnv = std::getenv("HOME");
+          std::string homePath = getPath(homeEnv);
+          std::string absPath = homePath + '/';
+          std::filesystem::current_path(absPath)
         }
         else if(std::filesystem::exists(arguments[1])){
           std::filesystem::current_path(arguments[1]);
