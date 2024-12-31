@@ -106,6 +106,14 @@ int main(){
       std::string pWD = std::filesystem::current_path();
       std::cout << pWD << std::endl;
     }//pwd
+    else if(arguments[0] == "cd"){
+        if(std::filesystem::exists(arguments[1])){
+          std::filesystem::current_path(arguments[1]);
+        }
+        else{
+          std::cout << arguments[1] << ": No such file or directory\n"; 
+        }
+    }//cd from absolute path
     else if(pathCheck != ""){
       executeChild(pathCheck, arguments); 
     }//program exe
